@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'askcompany.wsgi.application'
 
 # 사전 형식 이라는건 여러 db를 제공한다는 뜻
 # default는 sqlite
+# sqlite3 부분을 다른 db로 변경하면 sqlmigrate할 때 해당 db의 sql명령어 확인 가능
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
