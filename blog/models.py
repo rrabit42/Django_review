@@ -5,3 +5,11 @@ class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Comment(models.Model):
+    # on_delete옵션은 foreignkey로 post와 연결되어 있는데
+    # 만약 post가 없어지면 이 comment model도 삭제할 것인지 여부를 결정하는 것
+    # cascade는 같이 삭제하겠다는 옵션
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    message = models.TextField()
