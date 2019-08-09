@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'shop',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +76,8 @@ WSGI_APPLICATION = 'askcompany.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# 사전 형식 이라는건 여러 db를 제공한다는 뜻
+# default는 sqlite
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
