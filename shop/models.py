@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 class Item(models.Model):
@@ -11,6 +12,10 @@ class Item(models.Model):
   def __str__(self):
     # return '<{}> {}'.format(self.pk, self.name)
     return f'<{self.pk}> {self.name}'
+
+
+class Post(models.Model):
+  author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 
     
