@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9r75^(so&)(#r9ih(g9+rn(8^78v9-h*j356)y-u5st$rz!04*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 실제 서비스 시에는 이거 꼭 꺼야해!!!!!!!!!!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -131,3 +132,36 @@ STATIC_URL = '/static/'
 
 #debug toolbar를 띄워줄 ip
 INTERNAL_IPS = ['127.0.0.1']
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        },
+        'write_to_file': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.FileHandler',
+            'filename': 'db.log',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'handlers': ['console', 'write_to_file'],
+            'level': 'DEBUG',
+        },
+        'shop': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        }
+    }
+}
