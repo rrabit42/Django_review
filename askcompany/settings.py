@@ -25,9 +25,11 @@ SECRET_KEY = '9r75^(so&)(#r9ih(g9+rn(8^78v9-h*j356)y-u5st$rz!04*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # 실제 서비스 시에는 이거 꼭 꺼야해!!!!!!!!!!
-DEBUG = True
+# False하면 Allowed_host 세팅해 줘야함
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# 장고 서버가 돌고 있을 때 어떤 host들을 허용할 것이냐
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
