@@ -26,7 +26,7 @@ SECRET_KEY = '9r75^(so&)(#r9ih(g9+rn(8^78v9-h*j356)y-u5st$rz!04*'
 # SECURITY WARNING: don't run with debug turned on in production!
 # 실제 서비스 시에는 이거 꼭 꺼야해!!!!!!!!!!
 # False하면 Allowed_host 세팅해 줘야함
-DEBUG = False
+DEBUG = True
 
 # 장고 서버가 돌고 있을 때 어떤 host들을 허용할 것이냐
 ALLOWED_HOSTS = ['*']
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'django_extensions',
+    'django_jinja',
 
     'shop',
     'blog',
@@ -64,11 +65,30 @@ ROOT_URLCONF = 'askcompany.urls'
 
 TEMPLATES = [
     {
+        'BACKEND' : 'django_jinja.backend.Jinja2',
+        'APP_DIRS' : True,
+        "OPTIONS" : {
+            # 어떤 확장자에 대해서 Jinja2를 적용할것이냐
+            "match_extension": ".jinja",
+            # 해당 템플릿을 rendering하는데 필요한 인자들을 준비해주는 함수 리스트
+            "context_processors": [
+                "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        }
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # BASE_DIR은 위에 경로 표시되어 있음
             # BASE_DIR 경로에 있는 'askcompany
             # 그 안에 잇는 templates
+            # 비어있으면 파일시스템로더가 찾을 경로가 없는 것
             os.path.join(BASE_DIR, 'askcompany', 'templates'),
         ],
         # 얘가 False가 되면 app 밑에 있는 templates dir들을 사용하지 못하는것

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+    </head>
+    <body>
+        <h1>Ask Company</h1>
+
+{#        함수 호출을 하지 않은 형태로 출력, 기본 DTL 문법#}
+{#        {{ item_list.first }}#}
+{#        함수호출#}
+{#        {{ item_list.first() }}#}
+
+{#        context processor 중 auth 덕분에 유저가 찍힘#}
+        {{ user }}
+
+        <form action="" method="GET">
+            <input type="text" name="q" value="{{q}}"/>
+            <input type="submit" value="search" />
+        </form>
+        <ul>
+            {%  for item in item_list %}
+                <li>
+                    {{ item.name }}
+                    {{ item.price }}
+                    {{ item.desc }}
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
