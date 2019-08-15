@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>{% block title %}AskCompany{% endblock %}</title>
+      <style>
+          body{
+              background-color: lightyellow;
+          }
+      </style>
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body>
+        <h1>Ask Company</h1>
+
+        {% block content %}
+{#            block 이름이 content#}
+        {% endblock %}
+
+        <hr/>
+        &copy: 2018. Ask Company.
+        {% block extra_body %}{% endblock %}
+    </body>
+</html>
