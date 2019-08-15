@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# 이렇게 되면 얘는 manage.py가 있는 디렉토리 경로가 된다
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -62,7 +63,13 @@ ROOT_URLCONF = 'askcompany.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # BASE_DIR은 위에 경로 표시되어 있음
+            # BASE_DIR 경로에 있는 'askcompany
+            # 그 안에 잇는 templates
+            os.path.join(BASE_DIR, 'askcompany', 'templates'),
+        ],
+        # 얘가 False가 되면 app 밑에 있는 templates dir들을 사용하지 못하는것
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
