@@ -3,6 +3,19 @@
 
 {% block content %}
         <h2>{{ itme.name }}</h2>
+{#        없으면 오류뜨니까 항상 if처리!#}
+        {% if item.photo %}
+    {#        실제 db에 저장된 문자열이 찍힘#}
+{#            {{ item.photo }}#}
+    {#        내부적으로 url 만들어줌#}
+{#            {{ item.photo.url }}#}
+    {#        실제 media 루트 보여줌#}
+{#            {{ item.photo.path }}#}
+
+{#            다운로드하게 하려면 태그 바꿔주기, 이건 그냥 사진 보여주는 것#}
+            <img src="{{ item.photo.url }}" style="max-width: 100%" />
+            <br/>
+        {% endif %}
 
         가격: {{ item.price|intcomma }} 원
 

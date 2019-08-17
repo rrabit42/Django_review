@@ -164,6 +164,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'askcompany', 'static'),
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 #debug toolbar를 띄워줄 ip
 INTERNAL_IPS = ['127.0.0.1']
 
