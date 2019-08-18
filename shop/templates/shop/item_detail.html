@@ -2,7 +2,7 @@
 {% load humanize %}
 
 {% block content %}
-        <h2>{{ itme.name }}</h2>
+        <h2>{{ item.name }}</h2>
 {#        없으면 오류뜨니까 항상 if처리!#}
         {% if item.photo %}
     {#        실제 db에 저장된 문자열이 찍힘#}
@@ -26,5 +26,6 @@
         {% endif %}
 
         <hr/>
-        <a href="/shop/">목록</a>
+        <a href="{% url "shop:item_list" %}">목록</a>
+        <a href="{% url "shop:item_edit" item.pk %}">수정</a>
 {% endblock %}
