@@ -11,10 +11,14 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from os.path import dirname, abspath
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # 이렇게 되면 얘는 manage.py가 있는 디렉토리 경로가 된다
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
+#__file__가 지금 이 파일의 경로고, 이걸 abspath 즉, 절대경로로 만들어서, 부모 dir, 부모 dir(총2번) 계산해 낸다.
+# 우리가 예전 settings.py에서는 이렇게 하면 manage.py의 경로가 계산이 되는데
+# 지금은 바꾸었으므로 manage.py 경로를 다시 계산해줘야함
 
 
 # Quick-start development settings - unsuitable for production
