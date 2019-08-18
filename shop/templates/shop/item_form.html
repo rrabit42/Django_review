@@ -9,16 +9,7 @@
         <div class="container">
             <div class="col-sm-12">
                 <h2>New Item</h2>
-                {% if error_list %}
-                    <div class="alert alert-danger">
-                        error_list: {{ error_list }}
-                    </div>
-                {% endif %}
-                {% if initial %}
-                    <div class="alert alert-info">
-                        initial: {{ initial }}
-                    </div>
-                {% endif %}
+
 
 {#                action부분이 빔: 이 form이 보여지는 같은 주소로 요청을 보내겠다는 뜻#}
 {#                action은 form을 보낼 주소임#}
@@ -26,41 +17,12 @@
 {#                파일 보낼 때는 항상 enctype!#}
                 <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
                     {% csrf_token %}
+
                     <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>name</th>
-                                <td>
-                                    <input type="text" name="name" value="{{ initial.name }}" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>desc</th>
-                                <td>
-                                    <textarea name="desc" class="form-control">{{ initial.desc }}</textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>price</th>
-                                <td>
-                                    <input type="text" name="price" value="{{ initial.price }}" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>photo</th>
-                                <td>
-                                    <input type="file" name="photo" class="form-control" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>is_publish</th>
-                                <td>
-{#                                    value=1로 지정 안했으면 문자열로 "on"이 전송됨#}
-                                    <input type="checkbox" name="is_publish" value="1" {% if initial.is_publish %}checked{% endif %} />
-                                </td>
-                            </tr>
-                        </tbody>
+                        {{ form.as_table }}
                     </table>
+{#                    폼에 값 잘못 입력하면 빨갛게 표시되고 알림 뜨는거는 장고에서 제공하는게 아니라 브라우저 기능임#}
+
                     <input type="submit" value="저장하기" class="btn btn-primary" />
                 </form>
             </div>
