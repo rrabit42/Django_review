@@ -8,9 +8,8 @@
         <ul>
             {%  for item in item_list %}
                 <li>
-{#                    item.pk도됨#}
-{#                    이것보다는 추후 배울 url reverse를 쓰자#}
-                    <a href="/shop/{{ item.id }}">
+{#                    드디어 url reverse 사용!#}
+                    <a href="{{ item.get_absolute_url }}">
                         {{ item.name }}
                     </a>
                     {{ item.price }}
