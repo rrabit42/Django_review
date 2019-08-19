@@ -33,6 +33,7 @@ SECRET_KEY = '9r75^(so&)(#r9ih(g9+rn(8^78v9-h*j356)y-u5st$rz!04*'
 DEBUG = True
 
 # 장고 서버가 돌고 있을 때 어떤 host들을 허용할 것이냐
+# ngrok할때도 이거 host 추가해줘야함
 ALLOWED_HOSTS = ['*']
 
 
